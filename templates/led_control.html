@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} {{title}} {% endblock %}
+{% block content %}
+  
+
+
+<p class="title">Swiatlo LED</p>
+
+<form class="form_button" action="/led_on">    
+    <button class="buttons" style="width: 75%; margin-left: -10%">{{ button_start }}</button>  
+</form>
+<form class="form_button_no_space"  action="/led_off">    
+    <button class="buttons" style="width: 75%; margin-left: 30%">{{ button_stop }}</button> 
+</form> 
+
+<!-- action="/led_control/on" -->
+
+
+
+{% endblock %}

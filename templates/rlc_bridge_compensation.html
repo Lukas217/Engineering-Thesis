@@ -1,0 +1,32 @@
+
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Mostek RLC {% endblock %}
+
+{% block content %}
+
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+<!-- Compensation -->
+<br>
+<p class="link" style="margin-top: 5%;" >
+    <b>Kompensacja sond pomiarowych:</b>
+</p>
+<form class="form_for_device" action='{{ url_for("rlc_bridge_compens")}}' method="post">
+    {{ formv3.hidden_tag() }}
+    {{ formv3.compensation_choose(class="form form-control-lg", style="margin-left: 27%; width: 20%; text-align: center; ") }}
+    {{ formv3.submitv3(onclick="$('#loading').show();", class="buttons", style="width: 15%; margin-left: 2%")  }}
+</form>
+
+<!-- Back to rlc bridge main menu -->
+<form class="link" action="/rlc_bridge" style="margin-top: 5%;">     
+    <button class="buttons">
+        Powrót do głównego menu Mostka RLC
+        </button>
+</form>
+
+{% endblock %}
+
+<!-- source: icons8.com -->

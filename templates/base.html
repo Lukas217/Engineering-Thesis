@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+
+    <!-- From bootstrap -->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <!-- Icon for browser tab -->
+    <!-- Chrome, Opera -->
+    <link rel="icon" type="image/png" href="static/icon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="static/icon.png" sizes="32x32">
+
+    <!-- Internet explorer -->
+    <link rel="icon" type="image/x-icon" href="static/icon.ico" >
+    <link rel="shortcut icon" type="image/x-icon" href="static/icon.ico"/>
+   
+</head>
+<body>
+
+    <!-- From bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar navbar-dark" style="background-color: #4b6d85">
+        <a class="navbar-brand" href="/home_presentation">System prezentacyjny</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	 </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Urzadzenia</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="temp_sens">Czujnik temperatury</a>
+                <a class="dropdown-item" href="humidity_sens">Czujnik wilgotnosci</a>
+                <a class="dropdown-item" href="led_control">Swiatlo led</a>
+                <a class="dropdown-item" href="thermocouple">Termopara</a>
+            </div>
+            </li>
+		<li class="nav-item">
+		    <a class="nav-link" href="instructions">Instrukcje</a>
+		</li>
+		<li class="nav-item">
+		    <a class="nav-link" href="documentation">Dokumentacja</a>
+		</li>
+	    </ul>
+        </div>
+        
+        <!-- Button for searching -->  
+        <form method="POST" action="{{ url_for('search') }}" class="form-inline my-4 mx-auto">
+            {{ form_search.hidden_tag() }}
+            {{ form_search.searched(class="form-control mr-sm-2", placeholder="Wyszukaj...") }}
+            {{ form_search.submit(class="btn btn-light my-2 my-sm-0") }}
+        </form>
+        
+        
+        
+    </nav>
+    
+    {% block content %}
+    
+      
+    {% endblock %}
+
+    <!-- From bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+
+</body>
+</html>
+
+<!-- source: getbootstrap.com, icon-icons.com -->

@@ -1,0 +1,72 @@
+
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Mostek RLC {% endblock %}
+
+{% block content %}
+
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+<!-- RLC Settings -->
+<p class="link" style="margin-top: 1%;" >
+    <b>Wybierz ustawienia:</b>
+</p>
+<br>
+<form class="form_for_device" action='{{ url_for("rlc_bridge_settings")}}' method="post">
+    <meta http-equiv="refresh">
+    <br>
+    {{ form.hidden_tag() }}
+    {{ form.program_number.label}}
+    {{ form.program_number(class="form form-control-lg")}}
+    
+    &nbsp;
+    {{ form.measurement_speed.label}}
+    {{ form.measurement_speed(class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ form.circuit_type.label}}
+    {{ form.circuit_type(class="form form-control-lg") }}
+    &nbsp;
+    {{ form.circuit_range.label}}
+    {{ form.circuit_range(class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ form.voltage.label}}
+    {{ form.voltage(class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ form.dc_bias.label (style="margin-left: 0%; text-align: left; font-size: 25px") }}
+
+    {{ form.dc_bias(style="text-align: left; margin-left: 40%", class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ form.dc_bias_voltage.label }}
+    {{ form.dc_bias_voltage(class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ form.dc_bias_current.label }}
+    {{ form.dc_bias_current(class="form form-control-lg") }}
+    {{ form.submitv1(onclick="$('#loading').show();", class="buttons", style="width: 30%;") }}
+    <br>
+</form>
+
+
+<!-- Back to rlc bridge main menu -->
+<form class="link" action="/rlc_bridge" style="margin-top: 3%;">     
+    <button class="buttons">
+        Powrót do głównego menu Mostka RLC
+        </button>
+</form>
+
+<p class="link" >
+    <br>
+    <b>* - pola opcjonalne</b>
+    <br>
+    <b>W przypadku problemów w menu głównym wybierz "Zresetuj urządzenie"</b>
+</p>
+
+{% endblock %}
+
+<!-- source: icons8.com --@>

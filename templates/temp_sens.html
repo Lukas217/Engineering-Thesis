@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% block title %} Czujnik temperatury {% endblock %}
+
+{% block content %}
+
+<p class="title">Czujnik temperatury DS18B20</p>
+
+<div class="title" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+<p class="link" >
+    <b>Temperatura otoczenia:</b> {{ ds_sens_temp }} <span>&#176;</span>C
+</p>
+
+<form class="link" action='{{ url_for("temp_sens")}}' method="post">
+    {{ form.hidden_tag() }}
+    {{ form.how_many_temp_data(placeholder="Podaj liczbe pomiarow",min="1", max="30", style="width: 15%") }}
+    {{ form.how_many_temp_sec(placeholder="Podaj czas",min="1", max="180", style="width: 15%") }}
+    {{ form.submit(class="buttons", style="width: 15%; margin: 0%") }}
+</form>
+<br>
+<p class="link" >
+    <b>{{status}}</b> 
+</p>
+
+<form class="link" action="/temp_sens/get_data_temp_sens">     
+    <button onclick="$('#loading').show();" class="buttons">
+        Wykonaj pomiary
+      </button>
+</form>
+
+<form class="link" action="/temp_sens/txt_temp">     
+    <button class="buttons">
+        Pobierz plik z pomiarami
+      </button>
+</form>
+<br>
+<form class="link" action='{{ url_for("temp_sens")}}' method="post">
+    {{ form_send_mail.hidden_tag() }}
+    {{ form_send_mail.user_mail(placeholder="Podaj email") }}
+    {{ form_send_mail.submit(class="buttons", style="width: 15%; margin: 0%") }}
+</form>
+<br>
+<form class="link" action="/temp_sens/send_mail">     
+    <button onclick="$('#loading').show();" class="buttons">
+        Wyslij plik z danymi pomiarowymi
+      </button>
+</form>
+
+{% endblock %}
+
+<!-- source: icons8.com -->

@@ -1,0 +1,93 @@
+
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Mostek RLC {% endblock %}
+
+{% block content %}
+
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+
+<!-- Make measurements -->
+<p class="link" style="margin-top: 1%;" >
+    <b>Wykonaj automatyczne pomiary:</b>
+</p>
+
+<form id="measurement_form" class="form_for_device" action='{{ url_for("rlc_bridge_measur")}}' method="post">
+    <br>
+    {{ formv6.hidden_tag() }}
+    {{ formv6.frequency_range.label}}
+    {{ formv6.frequency_range(class="form form-control-lg ") }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ formv6.interval_between_samples.label}}
+    {{ formv6.interval_between_samples(class="form form-control-lg") }}
+    <br>
+    <br>
+    {{ formv6.make_csv.label}}
+    {{ formv6.make_csv(class="form form-control-lg") }}
+    &nbsp;
+    {{ formv6.send_email.label}}
+    {{ formv6.send_email(class="form form-control-lg") }}
+    <br>
+    {{ formv6.submitv6(onclick="$('#loading').show();", class="buttons", style="width: 30%;") }}
+    <br>
+</form>
+
+<!-- Info data -->
+<br>
+<p class="link" >
+    <b>Dane gotowe do pobrania: </b>{{ data_ready }}
+</p>
+
+<!-- Download csv -->
+<form class="link" action='{{ url_for("rlc_bridge_measur")}}' method="post">
+    
+    {{ formv2.hidden_tag() }}
+    {{ formv2.download_file.label}}
+    {{ formv2.download_file }}
+    {{ formv2.submitv2(class="buttons", style="width: 20%; margin: 0%") }}
+    <br>
+    <br>
+</form>
+
+<!-- Download characteristic nr. 1 -->
+<form class="link" action='{{ url_for("rlc_bridge_measur")}}' method="post">
+    
+    {{ formv7.hidden_tag() }}
+    {{ formv7.download_file_char.label}}
+    {{ formv7.download_file_char }}
+    {{ formv7.submitv7(class="buttons", style="width: 20%; margin: 0%") }}
+    <br>
+    <br>
+</form>
+
+<!-- Download characteristic nr. 2 -->
+<form class="link" action='{{ url_for("rlc_bridge_measur")}}' method="post">
+    
+    {{ formv8.hidden_tag() }}
+    {{ formv8.download_file_char.label}}
+    {{ formv8.download_file_char }}
+    {{ formv8.submitv8(class="buttons", style="width: 20%; margin: 0%") }}
+    <br>
+    <br>
+</form>
+
+<!-- Back to rlc bridge main menu -->
+<form class="link" action="/rlc_bridge" style="margin-top: 2%;">     
+    <button class="buttons">
+        Powrót do głównego menu Mostka RLC
+        </button>
+</form>
+
+<p class="link" >
+    <br>
+    <b>* - pola opcjonalne</b>
+    <br>
+    <b>W przypadku problemów wybierz "Zresetuj urządzenie"</b>
+</p>
+
+{% endblock %}
+
+<!-- source: icons8.com -->

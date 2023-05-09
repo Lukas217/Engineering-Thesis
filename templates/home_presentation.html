@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Strona glowna {% endblock %}
+{% block content %}
+
+<p class="title">System prezentacyjny</p>
+<p class="rasp_data">
+    {{ cpu_temp }}<br>{{ date }}<br>{{ time }}
+<p>
+
+<form class="link" action="/">     
+    <button class="buttons">
+        Powrót do wyboru platformy
+        </button>
+</form>
+{% endblock %}

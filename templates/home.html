@@ -1,0 +1,25 @@
+<!-- Icon for browser tab -->
+    <!-- Chrome, Opera -->
+    <link rel="icon" type="image/png" href="static/icon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="static/icon.png" sizes="32x32">
+
+    <!-- Internet explorer -->
+    <link rel="icon" type="image/x-icon" href="static/icon.ico" >
+    <link rel="shortcut icon" type="image/x-icon" href="static/icon.ico"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"> 
+
+<title> Strona główna </title>
+<p class="title"> <b>Wybierz aplikacje</b></p>
+<form class="link" action="/home_presentation">     
+    <button class="buttons">
+        System prezentacyjny
+      </button>
+</form>
+
+<form class="link" action="/home_automation">     
+    <button class="buttons">
+        Automatyzacja pomiarów
+      </button>
+</form>
+
+<!-- source: getbootstrap.com  -->

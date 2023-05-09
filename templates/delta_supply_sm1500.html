@@ -1,0 +1,73 @@
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Zasilacz {% endblock %}
+
+{% block content %}
+
+<!-- Page title -->
+<p class="title" style="padding: 30px;">Zasilacz Delta Elektronika SM1500-CP-30</p>
+
+<!-- Reset device -->
+<form class="form_for_device" action='{{ url_for("delta_supply_sm1500")}}' method="post">
+    {{ form.hidden_tag() }}
+    {{ form.submit1(onclick="$('#loading').show();", class="buttons", style="width: 15%;  margin-left: 30%;") }}
+    &nbsp;
+
+<!-- Check connection -->
+<form class="form_for_device" action='{{ url_for("delta_supply_sm1500")}}' method="post">
+    {{ form2.hidden_tag() }}
+    {{ form2.submit2(onclick="$('#loading').show();", class="buttons", style="width: 15%;  margin-left: -30%; ") }}
+</form>
+
+<p class="link" style="padding: 30px;"><b>Ustaw na zasilaczu setup nr. 3 przypisany do połączenia ethernet!</b></p>
+
+<!-- Device info -->
+<p class="link" style="padding: 30px;"><b>Informacje o urządzeniu:</b></p>
+<form class="device_status" action='{{ url_for("delta_supply_sm1500")}}' method="post">
+    {{ form.hidden_tag() }}
+    Status: {{ info_about_connect }}
+    <br>
+    Informacja o urządzeniu: {{ info_about_device }}
+    <br>
+    Temperatura urządzenia: {{ info_about_temp }}
+    <br>
+    Napięcie: {{ info_about_volt }}
+    <br>
+    Dodatni prąd: {{ info_about_curr_plus}}
+    <br>
+    Ujemny prąd: {{ info_about_curr_minus }}
+    <br>
+    Moc: {{ info_about_power }}
+    <br>
+    Error status: {{ info_about_error }}
+    <br>
+    Warning status: {{ info_about_warning }}
+    <br>
+</form>
+<br>
+
+<!-- Device settings -->
+<form class="form_for_device" action='{{ url_for("delta_supply_sm1500")}}' method="post">
+    {{ form3.hidden_tag() }}
+    <b>{{ form3.voltage.label(style="margin-left: 2%;") }}</b>
+    {{ form3.voltage(class="form form-control-lg", style="margin-left: 1%;", placeholder="Pole wymagane: np. 1.5") }}
+    &nbsp;
+    <b>{{ form3.current_plus.label}}</b>
+    {{ form3.current_plus(class="form form-control-lg",  placeholder="Pole wymagane: np. 1.5") }}
+    <br>
+    <br>
+    <b>{{ form3.current_minus.label(style="margin-left: 1.2%;") }}</b>
+    {{ form3.current_minus(class="form form-control-lg",  placeholder="Pole wymagane: np. -1.5") }}
+    &nbsp;
+    <b>{{ form3.power.label}}</b>
+    {{ form3.power(class="form form-control-lg", style="margin-left: 3.3%;",  placeholder="Pole opcjonalne: np. 1.5")  }}
+    <br>
+    <br>
+    <b></b>{{ form3.output.label(style="width: 10%; margin-left: 0%;")}}</b>
+    {{ form3.output(class="form form-control-lg")}}
+    <br>
+    {{ form3.submit3(onclick="$('#loading').show();", class="buttons", style="width: 40%; margin-left: 31%;") }}
+    <br>
+</form>
+{% endblock %}

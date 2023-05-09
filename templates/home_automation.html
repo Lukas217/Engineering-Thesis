@@ -1,0 +1,17 @@
+{% extends "base_for_automation.html" %}
+{% block title %} Strona glowna {% endblock %}
+{% block content %}
+
+<p class="title">Automatyzacja pomiarów</p>
+<p class="link">Po wybraniu urządzenia następuje automatyczne połączenie.</p>
+<br>
+<p class="rasp_data">
+    {{ cpu_temp }}<br>{{ date }}<br>{{ time }}
+<p>
+
+<form class="link" action="/">     
+    <button class="buttons">
+        Powrót do wyboru platformy
+        </button>
+</form>
+{% endblock %}

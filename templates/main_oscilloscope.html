@@ -1,0 +1,35 @@
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Oscyloskop {% endblock %}
+
+{% block content %}
+
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+<!-- Title -->
+</form>
+<p class="title" style="padding: 10px;">Oscyloskop Tektronix MSO6</p>
+
+<!-- Reset device -->
+<form class="form_for_device" action='{{ url_for("oscilloscope_home")}}' method="post">
+    {{ form.hidden_tag() }}
+    {{ form.submit(class="buttons", style="width: 15%;  margin-left: 30%;") }}
+    &nbsp;
+
+<!-- Check connection -->
+<form class="form_for_device" action='{{ url_for("oscilloscope_home")}}' method="post">
+    {{ form2.hidden_tag() }}
+    {{ form2.submit2(class="buttons", style="width: 15%;  margin-left: -30%; ") }}
+</form>
+
+<!-- Characteristic -->
+<p class="link_oscillocope"><a class="link_oscillocope" href="/oscilloscope_characteristic"><b>- Charakterystyka -</b></a></p>
+
+<!-- Data logger -->
+<p class="link_oscillocope"><a class="link_oscillocope" href="/oscilloscope_data_logger"><b>- Pobór danych -</b></a></p>
+
+{% endblock %}
+
+<!-- source: icons8.com -->

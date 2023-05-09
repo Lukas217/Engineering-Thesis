@@ -1,0 +1,58 @@
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Oscyloskop {% endblock %}
+
+{% block content %}
+
+<!-- Title -->
+</form>
+<p class="title" style="padding: 10px;">Oscyloskop Tektronix MSO6 - Charakterystyka</p>
+
+<!-- Oscilloscope characteristic settings -->
+<p class="link" style="margin-top: 1%;" >
+    <b>Wybierz ustawienia:</b>
+</p>
+<br>
+<form class="form_for_device" action='{{ url_for("oscilloscope_characteristic")}}' method="post">
+    <br>
+    {{ form.hidden_tag() }}
+    {{ form.which_channel.label(style="margin-left: 250;")}}
+    {{ form.which_channel(class="form form-control-lg")}}
+    
+    &nbsp;
+    {{ form.vertical_scale.label(style="margin-left: 0%;")}}
+    {{ form.vertical_scale(class="form form-control-lg", placeholder="(100[V] - 5m[V]) lub auto") }}
+    <br>
+    <br>
+    {{ form.horizontal_scale.label}}
+    {{ form.horizontal_scale(class="form form-control-lg", placeholder="(1[ks] - 40[ps]) lub auto") }}
+    &nbsp;
+    {{ form.send_email.label}}
+    {{ form.send_email(class="form form-control-lg") }}
+    <br>
+    {{ form.submit(onclick="$('#loading').show();", class="buttons", style="width: 30%;") }}
+    <br>
+</form>
+
+<!-- Download characteristic -->
+<form class="link" action='{{ url_for("oscilloscope_characteristic_download")}}' method="post">
+    
+    {{ formv2.hidden_tag() }}
+    {{ formv2.submit2(class="buttons", style="width: 30%; margin-top: 1%") }}
+    <br>
+    <br>
+</form>
+
+<!-- Back to oscilloscope main menu -->
+<form class="link" action="/main_oscilloscope">     
+    <button class="buttons">
+        Powrót do głównego menu oscyloskopu
+        </button>
+</form>
+{% endblock %}
+
+
+<!-- source: icons8.com -->

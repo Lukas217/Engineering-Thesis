@@ -1,0 +1,45 @@
+
+{% extends "base_for_automation.html" %}
+
+{% block title %} Mostek RLC {% endblock %}
+
+{% block content %}
+
+<!-- Loading screen -->
+<div class="loading_screen" id="loading" style="display:none;"><img src="static/loading.gif" alt="" />Trwa ladowanie...</div>
+
+<!-- Title -->
+</form>
+<p class="title" style="padding: 10px;">Mostek RLC HM8118 ROHDE&SHWARZ</p>
+
+<p class="link"><a class="link" href="/informations" target="_blank"><b>Instrukcje/Pomoc</b></a></p>
+<!-- Info data -->
+<br>
+<p class="link" >
+    <b>Dane urzadzenia:</b> {{rlc_info}}
+</p>
+
+<!-- Connect to device -->
+<form class="form_for_device" action='{{ url_for("rlc_bridge")}}' method="post">
+    {{ formv5.hidden_tag() }}
+    {{ formv5.submitv5(onclick="$('#loading').show();", class="buttons", style="width: 29%; margin-left: 0%; margin-right: 0%; margin-top: 0;") }}
+    &nbsp;
+<!-- Reset device -->
+<form class="form_for_device" action='{{ url_for("rlc_bridge")}}' method="post">
+    {{ formv4.hidden_tag() }}
+    {{ formv4.submitv4(onclick="$('#loading').show();", class="buttons", style="width: 29%; margin-left: 0%; margin-right: 0%; margin-top: 0;")  }}
+</form>
+
+<!-- Compensation -->
+<p class="link_oscillocope"><a class="link_oscillocope" href="/rlc_bridge_compens"><b>- Kompensacja sond -</b></a></p>
+
+<!-- Settings -->
+<p class="link_oscillocope"><a class="link_oscillocope" href="/rlc_bridge_settings"><b>- Ustawienia -</b></a></p>
+
+<!-- Measurements -->
+<p class="link_oscillocope"><a class="link_oscillocope" href="/rlc_bridge_measur"><b>- Automatyczne pomiary -</b></a></p>
+
+
+{% endblock %}
+
+<!-- source: icons8.com -->
